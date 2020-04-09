@@ -10,6 +10,9 @@ $str2 = "<br />Воздух усталые силы бодрит";
 $str3 = "<br />Лед неокрепший на речке студеной";
 $str4 = "<br />Словно как тающий сахар лежит.»";
 $str5 = "<br /><br /><span class=\"sign\">Н. А. Некрасов</span>";
+
+$x = 10;
+$y = 15;
   
 ?>
 <!DOCTYPE html>
@@ -49,13 +52,18 @@ echo '$a' . '; ' . '$b' . '; ' .'$c' . '; ' .'$d' . '; ' .'DAYSINWEEK' . '; ';
   echo (true xor true) . '- true, true<br />';
   
   echo '<br /><br />';
-$x = 10;
-$y = 15;
+
+  echo 'x = ' . $x;
+  echo '<br />y = ' . $y;
+  
   $x += $y;
   $y = $x - $y;
   $x = $x - $y;
   
-  
+  echo '<br /><br />';
+
+  echo 'x = ' . $x;
+  echo '<br />y = ' . $y;
   
     ?>
 </body>
