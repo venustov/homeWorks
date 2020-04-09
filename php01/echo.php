@@ -46,10 +46,10 @@ echo '$a' . '; ' . '$b' . '; ' .'$c' . '; ' .'$d' . '; ' .'DAYSINWEEK' . '; ';
   echo '<br /><br />' . $summ;
     
   echo '<br /><br />';
-  echo (true xor false) . '- true, false<br />';
-  echo (false xor true) . '- false, true<br />';
-  echo (false xor false) . '- false, false<br />';
-  echo (true xor true) . '- true, true<br />';
+  echo var_dump(true xor false) . '- true, false<br />';
+  echo var_dump(false xor true) . '- false, true<br />';
+  echo var_dump(false xor false) . '- false, false<br />';
+  echo var_dump(true xor true) . '- true, true<br />';
   
   echo '<br /><br />';
 
