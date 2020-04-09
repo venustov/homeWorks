@@ -42,6 +42,11 @@ echo '$a' . '; ' . '$b' . '; ' .'$c' . '; ' .'$d' . '; ' .'DAYSINWEEK' . '; ';
   
   echo '<br /><br />' . $summ;
   
+  echo (true xor false);
+  echo (false xor true);
+  echo (false xor false);
+  echo (true xor true);
+  
     ?>
 </body>
 
