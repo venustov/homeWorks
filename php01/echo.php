@@ -48,6 +48,15 @@ echo '$a' . '; ' . '$b' . '; ' .'$c' . '; ' .'$d' . '; ' .'DAYSINWEEK' . '; ';
   echo (false xor false) . '- false, false<br />';
   echo (true xor true) . '- true, true<br />';
   
+  echo '<br /><br />';
+$x = 10;
+$y = 15;
+  $x += $y;
+  $y = $x - $y;
+  $x = $x - $y;
+  
+  
+  
     ?>
 </body>
 
