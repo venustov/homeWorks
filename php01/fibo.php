@@ -6,6 +6,10 @@ function fibo($n){
     return fibo($n - 1) + fibo($n - 2);
   }
 }
+function fiboBetter($n){
+  return $n <= 2 ? 1 : fiboBetter($n - 1) + fiboBetter($n - 2);  
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -18,6 +22,7 @@ function fibo($n){
 <body>
   <?php
   echo fibo(8);
+  echo '<br /><br />' . fiboBetter(6);
     ?>
 </body>
 
