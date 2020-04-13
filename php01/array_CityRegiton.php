@@ -328,12 +328,12 @@ foreach ($arr as $el) {
   <title>Document</title>
 </head>
 <body>
-<? foreach ($citiesRegions as $region => $cities) : ?>
-  <p><? echo $region; ?></p><ul>
-  <? foreach ($cities as $value) : ?>
-    <li><? echo $value; ?></li>
-  <? endforeach; ?>
+<?php foreach ($citiesRegions as $region => $cities) : ?>
+  <p><?php echo $region; ?></p><ul>
+  <?php foreach ($cities as $value) : ?>
+    <li><?php echo $value; ?></li>
+  <?php endforeach; ?>
   </ul>
-<? endforeach; ?>
+<?php endforeach; ?>
 </body>
 </html>
