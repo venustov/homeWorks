@@ -13,14 +13,19 @@ elseif (isset($_POST['firstNumber']) && isset($_POST['secondNumber'])) {
 }
 
 function calc ($first, $second, $act) {
-  if ('/' == $act){
-    return $first / $second;
-  } elseif ('+' == $act) {
-    return $first + $second;
-  } elseif ('-' == $act) {
-    return $first - $second;
-  } elseif ('*' == $act) {
-    return $first * $second;
+  switch ($act) {
+    case '/':
+      return $first / $second;
+      break;
+    case '*':
+      return $first * $second;
+      break;
+    case '+':
+      return $first + $second;
+      break;
+    case '-':
+      return $first - $second;
+      break;
   }
 }
 ?>
@@ -32,7 +37,7 @@ function calc ($first, $second, $act) {
   <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 <body>
-  <form action="" method="post">
+  <form action="calcPro.php" method="post">
     <input name="firstNumber" class="span" type="number" value='<?php echo $firstNumber; ?>'>
     <h3 class="act"><?php echo $action; ?></h3>
     <input name="secondNumber" class="span" type="number" value='<?php echo $secondNumber; ?>'>
