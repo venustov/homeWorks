@@ -9,7 +9,7 @@ if (($_POST['firstNumber'] != '') && ($_POST['secondNumber'] != '')) {
   
 }
 elseif (isset($_POST['firstNumber']) && isset($_POST['secondNumber'])) {
-  $resolt = 'Введите корректные исходные данные';
+  echo 'Введите корректные исходные данные';
 }
 
 function calc ($first, $second, $act) {
