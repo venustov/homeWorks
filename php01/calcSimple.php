@@ -8,8 +8,8 @@ if (($_POST['firstNumber'] != '') && ($_POST['secondNumber'] != '')) {
   $resolt = ('/' == $action) && (0 == $secondNumber) ? 'Деление на "0" недопустимо!' : $firstNumber . ' ' . $action . ' ' . $secondNumber . ' = ' . calc ($firstNumber, $secondNumber, $action);
   
 }
-else {
-  $resolt = 'Введите корректные исходные данные';
+elseif (isset($_POST['firstNumber']) && isset($_POST['secondNumber'])) {
+  echo 'Введите корректные исходные данные';
 }
 
 function calc ($first, $second, $act) {
@@ -32,14 +32,14 @@ function calc ($first, $second, $act) {
 </head>
 <body>
   <form action="" method="post">
-    <input name="firstNumber" type="text">
+    <input name="firstNumber" type="number">
     <select name="action" id="">
       <option value="+">+</option>
       <option value="-">-</option>
       <option value="*">*</option>
       <option value="/">/</option>
     </select>
-    <input name="secondNumber" type="text">
+    <input name="secondNumber" type="number">
     <input type="submit" value="=">
   </form>
   <h1><?php echo $resolt; ?></h1>

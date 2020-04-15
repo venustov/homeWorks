@@ -33,9 +33,9 @@ function calc ($first, $second, $act) {
 </head>
 <body>
   <form action="" method="post">
-    <input name="firstNumber" class="span" type="text" value='<?php echo $firstNumber; ?>'>
+    <input name="firstNumber" class="span" type="number" value='<?php echo $firstNumber; ?>'>
     <h3 class="act"><?php echo $action; ?></h3>
-    <input name="secondNumber" class="span" type="text" value='<?php echo $secondNumber; ?>'>
+    <input name="secondNumber" class="span" type="number" value='<?php echo $secondNumber; ?>'>
     <h3 class="resolt"><?php echo $resolt; ?></h3>
     <div class="bottoms">
     <input type="submit" name="submit" class="bottom" value="*">
