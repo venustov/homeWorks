@@ -26,6 +26,10 @@ else if (isset($_POST['login']) && isset($_POST['password'])) {
 else {
   $url = 'auth.php';
 }
+
+if (isset($_COOKIE['style'])) {
+  $_SESSION['auth']['style'] = $_COOKIE['style'];
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">

@@ -37,10 +37,10 @@
   font-size: 20px;
 }
 .nolink {
-  background: orange;
+  background: #f53740b8;
 }
 .link:hover {
-  background: orange;
+  background: #f53740b8;
 }
 a {
   text-decoration: none;
