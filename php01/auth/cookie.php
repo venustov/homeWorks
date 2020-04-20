@@ -2,22 +2,15 @@
 
 session_start();
 
-if ('Выход' == $_POST['submit']) {
-  unset($_SESSION['auth']);
-  session_destroy();
-}
-else if ('Удалить куки' == $_POST['submit']) {
-  setcookie('url', '', time() - 3600);
-}
-else if ($_COOKIE['url']) {
+if ($_COOKIE['url']) {
   setcookie('url', $_SERVER['REQUEST_URI'], time() + 3600 * 24 * 7);
 }
 
 if (isset($_SESSION['auth'])) {
-  $_SESSION['auth']['url'] = $_SERVER['REQUEST_URI'];
+  $_SESSION['url'] = $_SERVER['REQUEST_URI'];
 }
 
-$stylesFile = isset($_SESSION['auth']['style']) ? $_SESSION['auth']['style'] : isset($_COOKIE['style']) ? $_COOKIE['style'] : 'styles';
+$stylesFile = isset($_SESSION['style']) ? $_SESSION['style'] : isset($_COOKIE['style']) ? $_COOKIE['style'] : 'styles';
 
 ?>
 <!DOCTYPE html>
@@ -32,13 +25,12 @@ $stylesFile = isset($_SESSION['auth']['style']) ? $_SESSION['auth']['style'] : i
 </head>
 <body>
  <div class="header">
-  <div class="nolink">Сессии</div>
-  <div class="link"><a href="cookie.php">Печеньки</a></div>
-<!--  <div class="link"><a href="settings.php">Настройки</a></div>-->
+  <div class="link"><a href="session.php">Сессии</a></div>
+  <div class="nolink">Печеньки</div>
  </div>
-  <form action="session.php" class="auth" method="post">
+  <form action="logout.php" class="auth" method="post">
   <?php if (isset($_SESSION['auth'])) : ?>
-   <p><?php echo $_SESSION['auth']['login']; ?> (<a href="settings.php">настройки</a>)</p>
+   <p><?php echo $_SESSION['auth']; ?> (<a href="settings.php">настройки</a>)</p>
     <p><input type="submit" name="submit" value="Выход"></p>
     <?php if (isset($_COOKIE['url'])) : ?>
     <p><input type="submit" name="submit" value="Удалить куки"></p>
