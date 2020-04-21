@@ -1,12 +1,6 @@
 <?php
 session_start();
-// функция выхода
-function logout() {
-  unset($_SESSION['auth']);
-  session_destroy();
-  setcookie('auth', '', time() - 3600);
-  setcookie('style', '', time() - 3600);
-}
+require __DIR__ . '/functions.php';
 
 if ('Выход' == $_POST['submit']) {
   logout();
