@@ -37,10 +37,10 @@
   font-size: 20px;
 }
 .nolink {
-  background: #f53740b8;
+  background: orange;
 }
 .link:hover {
-  background: #f53740b8;
+  background: orange;
 }
 a {
   text-decoration: none;
@@ -51,4 +51,7 @@ a {
   padding: 20px;
   border: 1px solid #9e9e9e;
   border-radius: 10px;
+}
+.pimg {
+  width: 200px;
 }

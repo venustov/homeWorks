@@ -1,7 +1,15 @@
 <?php
 session_start();
 
-// почти всё оставлено как было. не по фэн-шую )
+require __DIR__ . '/functions.php';
+
+// если пользователь не авторизован, то перекидываем на страницу авторизации:
+if (!isUser()) {
+  header('Location: auth.php');
+  exit;
+}
+
+// почти всё остальное оставлено как было. не по фэн-шую )
 
 if (isset($_POST['submit']) && isset($_POST['style'])) {
   setcookie('style', $_POST['style'], time() + 3600 * 24 * 7);
