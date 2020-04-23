@@ -37,7 +37,7 @@
   font-size: 20px;
 }
 .nolink {
-  background: #f53740b8;
+  background: rgba(245, 55, 64, 0.72);
 }
 .link:hover {
   background: #f53740b8;

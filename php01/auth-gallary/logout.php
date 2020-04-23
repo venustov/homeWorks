@@ -1,6 +1,6 @@
 <?php
 session_start();
-require __DIR__ . '/functions.php';
+require __DIR__ . DIRECTORY_SEPARATOR . 'functions.php';
 
 if ('Выход' == $_POST['submit']) {
   logout();

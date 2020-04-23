@@ -1,7 +1,14 @@
 <?php
 session_start();
+require __DIR__ . DIRECTORY_SEPARATOR . 'functions.php';
 
-require __DIR__ . '/functions.php';
+$connect = mysqli_connect('localhost', 'root', '');
+$res = mysqli_select_db($connect, 'homeworks');
+//var_dump($res);
+$res = mysqli_query($connect, 'SELECT * FROM people');
+while (false != ($row = mysqli_fetch_array($res))) {
+    echo $row['name'] . '<br />';
+}
 
 // пользователь авторизован:
 /*
@@ -23,7 +30,7 @@ $stylesFile = isset($_SESSION['style']) ? $_SESSION['style'] : isset($_COOKIE['s
 </head>
 <body><?php
 if (isUser()) {
-  echo '<h1>Загрузить изображение:</h1>
+  echo '<h1>Загрузить изображение (оно тебе нада?):</h1>
  <form action="upload_img.php" method="post" enctype="multipart/form-data">
    <input type="file" name="picture">
    <input type="submit" value="Загрузить">
@@ -31,6 +38,7 @@ if (isUser()) {
 }
 $dir = 'img/';
 echo search_img($dir);
+echo search_img_to_bd($dir);
 ?>
 </body>
 </html>

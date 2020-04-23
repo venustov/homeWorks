@@ -1,6 +1,6 @@
 <?php
 session_start();
-require __DIR__ . '/functions.php';
+require __DIR__ . DIRECTORY_SEPARATOR . 'functions.php';
 
 // проверяем не пустые ли поля в форме авторизации:
 if (empty($_POST['login']) || empty($_POST['password'])) {

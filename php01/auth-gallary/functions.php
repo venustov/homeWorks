@@ -28,13 +28,21 @@ function logout() {
   setcookie('auth', '', time() - 3600);
   setcookie('style', '', time() - 3600);
 }
-// поиск изображений в заданной папке
+// поиск изображений в заданной папке и формирование строки для вывода
 function search_img($path){
    $html='';
-  foreach (glob($path."*.{jpg,png,gif,jpeg}", GLOB_BRACE) as $filename) {
-    $html .= '<img class="pimg" src="'.$filename.'" alt="" />';
+  foreach (glob($path . "*.{jpg,png,gif,jpeg}", GLOB_BRACE) as $filename) {
+    $html .= '<img class="pimg" src="' . $filename . '" alt="" />';
   }
   return $html; 
+}
+// то же, только формирование строки для занесения их в БД
+function search_img_to_bd($path){
+    $sql='INSERT INTO images (name) VALUES';
+    foreach (glob($path . "*.{jpg,png,gif,jpeg}", GLOB_BRACE) as $filename) {
+        $sql .= ' (' . $filename . '),';
+    }
+    return $sql;
 }
 
 ?>
