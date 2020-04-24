@@ -38,11 +38,29 @@ function search_img($path){
 }
 // то же, только формирование строки для занесения их в БД
 function search_img_to_bd($path){
-    $sql='INSERT INTO images (name) VALUES';
+    $sql='INSERT INTO images (name, title) VALUES';
     foreach (glob($path . "*.{jpg,png,gif,jpeg}", GLOB_BRACE) as $filename) {
-        $sql .= ' (' . $filename . '),';
+        $sql .= ' ("' . $filename . '", ""),';
     }
     return $sql;
 }
-
+// соединение с Базой Данных
+function bdConnect(){
+    $connect = mysqli_connect('localhost', 'root', '');
+    mysqli_select_db($connect, 'homeworks');
+    return $connect;
+}
+// вывод картинок
+function galleryBD($res){
+    $str = '';
+    while (false != ($row = mysqli_fetch_assoc($res))) {
+        $str .= '<a href="photo.php?id=' . $row['id'] . '" target ="_blank"><img class="pimg" src="/img/' . $row['name'] . '" alt="' . $row['title'] . '"></a>';
+    }
+    return $str;
+}
+function viewPhoto($res){
+    $row = mysqli_fetch_assoc($res);
+    $str = '<div class="photo"><img class="photo" src="/img/' . $row['name'] . '"><p class="photo">' . $row['title'] . '</p></div>';
+    return $str;
+}
 ?>

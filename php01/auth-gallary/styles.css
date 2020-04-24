@@ -55,3 +55,6 @@ a {
 .pimg {
   width: 200px;
 }
+img.photo {
+  max-width: 800px;
+}

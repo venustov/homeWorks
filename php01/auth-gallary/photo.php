@@ -2,8 +2,12 @@
 session_start();
 require __DIR__ . DIRECTORY_SEPARATOR . 'functions.php';
 
+if (!isset($_GET['id'])){
+    header('Location: /index.php');
+}
+$idOfPhoto = $_GET['id'];
 $connect = bdConnect();
-$bdQuery = 'SELECT * FROM images';
+$bdQuery = 'SELECT * FROM images WHERE id = ' . $idOfPhoto;
 $res = mysqli_query($connect, $bdQuery);
 
 // пользователь авторизован:
@@ -25,16 +29,7 @@ $stylesFile = isset($_SESSION['style']) ? $_SESSION['style'] : isset($_COOKIE['s
     <link rel="stylesheet" type="text/css" href="<?php echo $stylesFile; ?>.css">
 </head>
 <body><?php
-if (isUser()) {
-    echo '<h1>Загрузить изображение (оно тебе нада?):</h1>
- <form action="upload_img.php" method="post" enctype="multipart/form-data">
-   <input type="file" name="picture">
-   <input type="submit" value="Загрузить">
- </form>';
-}
-// $dir = 'img/';
-// echo search_img($dir);
-echo galleryBD($res);
+echo viewPhoto($res);
 ?>
 </body>
 </html>
