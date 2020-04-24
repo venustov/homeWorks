@@ -10,6 +10,9 @@ $connect = bdConnect();
 $bdQuery = 'SELECT * FROM images WHERE id = ' . $idOfPhoto;
 $res = mysqli_query($connect, $bdQuery);
 
+$bdQuery = 'UPDATE images SET viewcounter = viewcounter + 1 WHERE id = ' . $idOfPhoto;
+mysqli_query($connect, $bdQuery);
+
 // пользователь авторизован:
 /*
 $url = isset($_SESSION['url']) ? $_SESSION['url'] : isset($_COOKIE['url']) ? $_COOKIE['url'] : 'session.php';

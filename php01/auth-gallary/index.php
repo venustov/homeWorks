@@ -3,7 +3,7 @@ session_start();
 require __DIR__ . DIRECTORY_SEPARATOR . 'functions.php';
 
 $connect = bdConnect();
-$bdQuery = 'SELECT * FROM images';
+$bdQuery = 'SELECT * FROM images ORDER BY viewcounter DESC ';
 $res = mysqli_query($connect, $bdQuery);
 
 // пользователь авторизован:
@@ -26,10 +26,11 @@ $stylesFile = isset($_SESSION['style']) ? $_SESSION['style'] : isset($_COOKIE['s
 </head>
 <body><?php
 if (isUser()) {
-    echo '<h1>Загрузить изображение (оно тебе нада?):</h1>
- <form action="upload_img.php" method="post" enctype="multipart/form-data">
+    echo '<form class="upload" action="upload_img.php" method="post" enctype="multipart/form-data">
+   <h3>Загрузить изображение:</h3>
    <input type="file" name="picture">
    <input type="submit" value="Загрузить">
+   <input type="text" name="title" placeholder="Пару слов о картинке, плиз )">
  </form>';
 }
 // $dir = 'img/';
