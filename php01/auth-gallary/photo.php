@@ -33,6 +33,7 @@ $stylesFile = isset($_SESSION['style']) ? $_SESSION['style'] : isset($_COOKIE['s
 </head>
 <body><?php
 echo viewPhoto($res);
+mysqli_close($connect);
 ?>
 </body>
 </html>
