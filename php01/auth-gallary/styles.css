@@ -54,4 +54,15 @@ a {
 }
 .pimg {
   width: 200px;
+  margin: 5px;
+}
+img.photo {
+  width: 500px;
+}
+.upload {
+  width: 600px;
+  padding: 0 20px 20px 20px;
+  margin: 10px auto 10px auto;
+  border: 1px solid #9e9e9e;
+  border-radius: 10px;
 }

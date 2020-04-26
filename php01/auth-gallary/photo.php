@@ -2,9 +2,16 @@
 session_start();
 require __DIR__ . DIRECTORY_SEPARATOR . 'functions.php';
 
+if (!isset($_GET['id'])){
+    header('Location: /index.php');
+}
+$idOfPhoto = $_GET['id'];
 $connect = bdConnect();
-$bdQuery = 'SELECT * FROM images ORDER BY viewcounter DESC';
+$bdQuery = 'SELECT * FROM images WHERE id = ' . $idOfPhoto;
 $res = mysqli_query($connect, $bdQuery);
+
+$bdQuery = 'UPDATE images SET viewcounter = viewcounter + 1 WHERE id = ' . $idOfPhoto;
+mysqli_query($connect, $bdQuery);
 
 // пользователь авторизован:
 /*
@@ -25,17 +32,7 @@ $stylesFile = isset($_SESSION['style']) ? $_SESSION['style'] : isset($_COOKIE['s
     <link rel="stylesheet" type="text/css" href="<?php echo $stylesFile; ?>.css">
 </head>
 <body><?php
-if (isUser()) {
-    echo '<form class="upload" action="upload_img.php" method="post" enctype="multipart/form-data">
-   <h3>Загрузить изображение:</h3>
-   <input type="file" name="picture">
-   <input type="submit" value="Загрузить">
-   <input type="text" name="title" placeholder="Пару слов о картинке, плиз )">
- </form>';
-}
-// $dir = 'img/';
-// echo search_img($dir);
-echo galleryBD($res);
+echo viewPhoto($res);
 mysqli_close($connect);
 ?>
 </body>
