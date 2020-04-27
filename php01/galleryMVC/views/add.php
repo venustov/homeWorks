@@ -9,6 +9,6 @@
 </head>
 <body>
 <?php include __DIR__ . '/form.php'; ?>
-<a href="/">На главную</a>
+<p><a href="/">На главную</a></p>
 </body>
 </html>
