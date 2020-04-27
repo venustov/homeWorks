@@ -1,9 +1,19 @@
 <?php
+require_once __DIR__ . '/../functions/sql.php';
+
 function Photo_getAll()
 {
-  return [
-    ['title' => 'Фото 1', 'path' => '/img/photo1.jpg'],
-    ['title' => 'Фото 2', 'path' => '/img/photo2.jpg'],
-    ['title' => 'Фото 3', 'path' => '/img/photo3.jpg']
-  ];
+
+  $sql = 'SELECT * from images';
+  return Sql_query($sql);
+
+}
+
+function Photo_insert($data)
+{
+  $sqlQuery = 'INSERT INTO images
+(name, title)
+VALUES (\'' . $data['picture'] . '\', \'' . $data['title'] . '\')';
+
+  Sql_exec($sqlQuery);
 }
