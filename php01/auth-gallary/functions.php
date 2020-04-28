@@ -71,7 +71,7 @@ function galleryBD($res)
 {
     $str = '';
     while (false != ($row = mysqli_fetch_assoc($res))) {
-        $str .= '<a href="photo.php?id=' . $row['id'] . '" target ="_blank"><img class="pimg" src="/img/' . $row['name'] . '" alt="' . $row['title'] . '"></a>';
+        $str .= '<a href="photo.php?id=' . $row['id'] . '" target ="_blank"><img class="pimg" src="http://gallery/img/' . $row['name'] . '" alt="' . $row['title'] . '"></a>';
     }
     return $str;
 }
@@ -81,7 +81,7 @@ function viewPhoto($res)
     $row = mysqli_fetch_assoc($res);
     $viewcounter = $row['viewcounter'] + 1;
     $str = '<div class="photo">
-        <img class="photo" src="/img/' . $row['name'] . '">
+        <img class="photo" src="http://gallery/img/' . $row['name'] . '">
         <p class="view">Количество просмотров: ' . $viewcounter . '</p>
         <p class="title">' . $row['title'] . '</p>
     </div>';
