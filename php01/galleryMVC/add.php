@@ -16,7 +16,6 @@ if (!empty($_POST)){
     if (false !== $res){
       $data['picture'] = $res;
       Photo_insert($data);
-      die();
       header('Location: /');
       die();
     }

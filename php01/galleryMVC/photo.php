@@ -1,7 +1,6 @@
 <?php
 /*
 session_start();
-require __DIR__ . DIRECTORY_SEPARATOR . 'functions.php';
 */
 require __DIR__ . '/models/photo.php';
 require_once __DIR__ . '/functions/sql.php';
