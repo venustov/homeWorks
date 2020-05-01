@@ -4,21 +4,21 @@ require_once __DIR__ . '/../functions/sql.php';
 function Article_getAll()
 {
 
-  $sql = 'SELECT * from images ORDER BY viewcounter DESC';
+  $sql = 'SELECT * from articles';
   return Sql_query($sql);
 
 }
 
-function Photo_insert($data)
+function Article_insert($data)
 {
-  $sqlQuery = 'INSERT INTO images
-(name, title)
-VALUES (\'' . $data['picture'] . '\', \'' . $data['title'] . '\')';
+  $sqlQuery = 'INSERT INTO articles
+(title, content, preview)
+VALUES (\'' . $data['title'] . '\', \'' . $data['content'] . '\', \'' . $data['picture'] . '\')';
 
   Sql_exec($sqlQuery);
 }
 
-function Photo_getOne($id){
-  $sql = 'SELECT * from images WHERE id = ' . $id;
+function Article_getOne($id){
+  $sql = 'SELECT * from articles WHERE id = ' . $id;
   return Sql_queryOnce($sql);
 }

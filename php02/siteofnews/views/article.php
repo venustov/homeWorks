@@ -8,10 +8,10 @@
 </head>
 <body>
 
-<div class="photo">
-    <img class="photo" src="/img/<?php echo $item['name']; ?>">
+<div class="article">
+    <h2><?php echo $item['title']; ?></h2>
+    <p class="content"><?php echo $item['content']; ?></p>
     <p class="view">Количество просмотров: <?php echo $viewcounter; ?></p>
-    <p class="title"><?php echo $item['title']; ?></p>
 </div>
 
 </body>

@@ -9,10 +9,11 @@
     <link rel="stylesheet" type="text/css" href="/styles/current.css">
 </head>
 <body>
+<p><a href="/add.php">Добавить статью</a></p>
 <?php
-include __DIR__ . '/form.php';
+// include __DIR__ . '/form.php';
 foreach($items as $item){
-  $str = '<a href="article.php?id=' . $item['id'] . '" target ="_blank"><img class="pimg" src="/img/' . $item['name'] . '" alt="' . $item['title'] . '"></a>';
+  $str = '<div class="article prev"><a href="article.php?id=' . $item['id'] . '"><img class="prev" src="/img/' . $item['preview'] . '" alt=""></a></div><a href="article.php?id=' . $item['id'] . '">' . $item['title'] . '</a>';
   echo $str;
 }
 ?>
