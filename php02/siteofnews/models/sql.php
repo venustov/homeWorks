@@ -8,13 +8,13 @@ class Sql
     return $mysqli;
   }
 
-  public static function query($sql)
+  public static function query($sql, $class = 'stdClass')
   {
     $mysqli = self::connect();
     $res = $mysqli->query($sql);
 
     $ret = [];
-    while (false != $row = $res->fetch_assoc()) {
+    while (false != $row = $res->fetch_object($class)) {
       $ret[] = $row;
     }
     $mysqli->close();
@@ -28,11 +28,11 @@ class Sql
     $mysqli->close();
   }
 
-  public static function queryOnce($sql)
+  public static function queryOnce($sql, $class = 'stdClass')
   {
     $mysqli = self::connect();
     $res = $mysqli->query($sql);
-    $row = $res->fetch_assoc();
+    $row = $res->fetch_object($class);
     $mysqli->close();
     return $row;
   }

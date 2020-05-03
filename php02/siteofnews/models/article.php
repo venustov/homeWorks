@@ -2,13 +2,20 @@
 //require_once __DIR__ . '/../functions/sql.php';
 require_once __DIR__ . '/../models/sql.php';
 
-abstract class Article
+class Article
 {
+  public $id;
+  public $title;
+  public $content;
+  public $timeofadd;
+  public $viewcounter;
+  public $preview;
+
   public static function getAll()
   {
 
     $sql = 'SELECT * from articles';
-    return Sql::query($sql);
+    return Sql::query($sql, 'Article');
 
   }
 
@@ -24,15 +31,9 @@ VALUES (\'' . $data['title'] . '\', \'' . $data['content'] . '\', \'' . $data['p
   public static function getOne($id)
   {
     $sql = 'SELECT * from articles WHERE id = ' . $id;
-    return Sql::queryOnce($sql);
+    return Sql::queryOnce($sql, 'Article');
   }
 }
-
-class NewsArticle extends Article
-{
-
-}
-
 
 /* Старая версия в процедурном стиле:
 function Article_getAll()

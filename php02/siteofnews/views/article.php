@@ -10,8 +10,8 @@
 
 <div class="article">
     <p><a href="/">На главную</a></p>
-    <h2><?php echo $item['title']; ?></h2>
-    <p class="content"><?php echo $item['content']; ?></p>
+    <h2><?php echo $item->title; ?></h2>
+    <p class="content"><?php echo $item->content; ?></p>
     <p class="view">Количество просмотров: <?php echo $viewcounter; ?></p>
 </div>
 
