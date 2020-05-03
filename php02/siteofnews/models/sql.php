@@ -8,7 +8,7 @@ class Sql
     return $mysqli;
   }
 
-  public static function Sql_query($sql)
+  public static function query($sql)
   {
     $mysqli = self::connect();
     $res = $mysqli->query($sql);
@@ -21,14 +21,14 @@ class Sql
     return $ret;
   }
 
-  public static function Sql_exec($sql)
+  public static function exec($sql)
   {
     $mysqli = self::connect();
     $mysqli->query($sql);
     $mysqli->close();
   }
 
-  public static function Sql_queryOnce($sql)
+  public static function queryOnce($sql)
   {
     $mysqli = self::connect();
     $res = $mysqli->query($sql);

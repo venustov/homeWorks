@@ -23,7 +23,7 @@ if (!empty($_POST)){
   }
 
   if (isset($data['title']) && isset($data['content']) && isset($data['picture'])){
-    Article_insert($data);
+    Article::insert($data);
     header('Location: /');
     die();
   }
