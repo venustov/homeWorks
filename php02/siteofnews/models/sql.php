@@ -2,36 +2,38 @@
 
 class Sql
 {
-  private function __construct()
+  private static function connect()
   {
-    $connect = mysqli_connect('localhost', 'root', '');
-    mysqli_select_db($connect, 'homeworks');
-    return $connect;
+    $mysqli = new mysqli('localhost', 'root', '', 'homeworks');
+    return $mysqli;
   }
 
-  public function Sql_query($sql)
+  public static function Sql_query($sql)
   {
-    $res = mysqli_query($this, $sql);
+    $mysqli = self::connect();
+    $res = $mysqli->query($sql);
 
     $ret = [];
-    while (false != $row = mysqli_fetch_assoc($res)) {
+    while (false != $row = $res->fetch_assoc()) {
       $ret[] = $row;
     }
-    mysqli_close($this);
+    $mysqli->close();
     return $ret;
   }
 
-  public function Sql_exec($sql)
+  public static function Sql_exec($sql)
   {
-    mysqli_query($this, $sql);
-    mysqli_close($this);
+    $mysqli = self::connect();
+    $mysqli->query($sql);
+    $mysqli->close();
   }
 
-  public function Sql_queryOnce($sql)
+  public static function Sql_queryOnce($sql)
   {
-    $res = mysqli_query($this, $sql);
-    $row = mysqli_fetch_assoc($res);
-    mysqli_close($this);
+    $mysqli = self::connect();
+    $res = $mysqli->query($sql);
+    $row = $res->fetch_assoc();
+    $mysqli->close();
     return $row;
   }
 }
