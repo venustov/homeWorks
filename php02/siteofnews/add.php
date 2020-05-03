@@ -11,14 +11,21 @@ if (!empty($_POST)){
     $data['title'] = $_POST['title'];
   }
 
+  if (!empty($_POST['content'])){
+    $data['content'] = $_POST['content'];
+  }
+
   if (!empty($_FILES)){
     $res = File_upload('picture');
     if (false !== $res){
       $data['picture'] = $res;
-      Photo_insert($data);
-      header('Location: /');
-      die();
     }
+  }
+
+  if (isset($data['title']) && isset($data['content']) && isset($data['picture'])){
+    Article::insert($data);
+    header('Location: /');
+    die();
   }
 
 }
