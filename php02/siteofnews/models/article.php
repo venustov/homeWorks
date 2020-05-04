@@ -1,6 +1,6 @@
 <?php
 //require_once __DIR__ . '/../functions/sql.php';
-require_once __DIR__ . '/../models/sql.php';
+require_once __DIR__ . '/../classes/sql.php';
 
 class Article
 {

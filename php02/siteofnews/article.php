@@ -4,7 +4,6 @@ session_start();
 */
 
 require_once __DIR__ . '/models/article.php';
-require_once __DIR__ . '/models/sql.php';
 
 if (!isset($_GET['id'])){
     header('Location: /index.php');
