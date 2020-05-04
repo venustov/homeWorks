@@ -2,7 +2,7 @@
 //require_once __DIR__ . '/../functions/sql.php';
 require_once __DIR__ . '/../classes/sql.php';
 
-class Article
+class News
 {
   public $id;
   public $title;
@@ -15,7 +15,7 @@ class Article
   {
 
     $sql = 'SELECT * from articles';
-    return Sql::query($sql, 'Article');
+    return Sql::query($sql, 'News');
 
   }
 
@@ -31,7 +31,7 @@ VALUES (\'' . $data['title'] . '\', \'' . $data['content'] . '\', \'' . $data['p
   public static function getOne($id)
   {
     $sql = 'SELECT * from articles WHERE id = ' . $id;
-    return Sql::queryOnce($sql, 'Article');
+    return Sql::queryOnce($sql, 'News');
   }
 
   public static function upViewCounter($id, $viewcounter)

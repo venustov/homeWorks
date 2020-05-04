@@ -30,10 +30,6 @@ class Sql
 
   public static function queryOnce($sql, $class = 'stdClass')
   {
-    $mysqli = self::connect();
-    $res = $mysqli->query($sql);
-    $row = $res->fetch_object($class);
-    $mysqli->close();
-    return $row;
+    return self::query($sql, $class)[0];
   }
 }

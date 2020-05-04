@@ -3,16 +3,16 @@
 session_start();
 */
 
-require_once __DIR__ . '/models/article.php';
+require_once __DIR__ . '/models/News.php';
 
 if (!isset($_GET['id'])){
     header('Location: /index.php');
 }
 
-$item = Article::getOne($_GET['id']);
-$viewcounter = Article::upViewCounter($_GET['id'], $item->viewcounter);
+$item = News::getOne($_GET['id']);
+$viewcounter = News::upViewCounter($_GET['id'], $item->viewcounter);
 
-include  __DIR__ . '/views/article.php';
+include __DIR__ . '/views/article.php';
 
 // пользователь авторизован:
 /*

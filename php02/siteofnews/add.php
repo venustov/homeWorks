@@ -1,7 +1,7 @@
 <?php
 
 require_once __DIR__ . '/functions/file.php';
-require_once __DIR__ . '/models/article.php';
+require_once __DIR__ . '/models/News.php';
 
 if (!empty($_POST)){
 
@@ -23,7 +23,7 @@ if (!empty($_POST)){
   }
 
   if (isset($data['title']) && isset($data['content']) && isset($data['picture'])){
-    Article::insert($data);
+    News::insert($data);
     header('Location: /');
     die();
   }
