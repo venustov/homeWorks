@@ -1,6 +1,6 @@
 <?php
 
-class News
+class News extends AbstractModel
 {
   public $id;
   public $title;
@@ -9,13 +9,8 @@ class News
   public $viewcounter;
   public $preview;
 
-  public static function getAll()
-  {
-
-    $sql = 'SELECT * from articles';
-    return DB::queryAll($sql, 'News');
-
-  }
+  protected static $table = 'articles';
+  protected static $class = 'News';
 
   public static function insert($data)
   {
@@ -24,12 +19,6 @@ class News
 VALUES (\'' . $data['title'] . '\', \'' . $data['content'] . '\', \'' . $data['picture'] . '\')';
 
     DB::exec($sql);
-  }
-
-  public static function getOne($id)
-  {
-    $sql = 'SELECT * from articles WHERE id = ' . $id;
-    return DB::queryOne($sql, 'News');
   }
 
   public static function upViewCounter($id, $viewcounter)
