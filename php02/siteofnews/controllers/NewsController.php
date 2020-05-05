@@ -11,8 +11,14 @@ class NewsController
 
   public function actionOne()
   {
-    $id = $_GET['id'];
-    $item = News::getOne($id);
+    if (!$_GET['id']) {
+      header('Location: /index.php');
+      die();
+    }
+    $item = News::getOne($_GET['id']);
+    if (empty($item)){
+      exit('Запрашиваемой статьи нету в Базе Данных');
+    }
     $viewcounter = News::upViewCounter($_GET['id'], $item->viewcounter);
     include __DIR__ . '/../views/news/one.php';
   }
