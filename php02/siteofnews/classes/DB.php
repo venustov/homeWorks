@@ -1,6 +1,6 @@
 <?php
 
-class Sql
+class DB
 {
   private static function connect()
   {
@@ -8,7 +8,7 @@ class Sql
     return $mysqli;
   }
 
-  public static function query($sql, $class = 'stdClass')
+  public static function queryAll($sql, $class = 'stdClass')
   {
     $mysqli = self::connect();
     $res = $mysqli->query($sql);
@@ -28,8 +28,8 @@ class Sql
     $mysqli->close();
   }
 
-  public static function queryOnce($sql, $class = 'stdClass')
+  public static function queryOne($sql, $class = 'stdClass')
   {
-    return self::query($sql, $class)[0];
+    return self::queryAll($sql, $class)[0];
   }
 }

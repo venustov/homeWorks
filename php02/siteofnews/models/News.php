@@ -1,6 +1,4 @@
 <?php
-//require_once __DIR__ . '/../functions/sql.php';
-require_once __DIR__ . '/../classes/sql.php';
 
 class News
 {
@@ -15,7 +13,7 @@ class News
   {
 
     $sql = 'SELECT * from articles';
-    return Sql::query($sql, 'News');
+    return DB::queryAll($sql, 'News');
 
   }
 
@@ -25,19 +23,19 @@ class News
 (title, content, preview)
 VALUES (\'' . $data['title'] . '\', \'' . $data['content'] . '\', \'' . $data['picture'] . '\')';
 
-    Sql::exec($sql);
+    DB::exec($sql);
   }
 
   public static function getOne($id)
   {
     $sql = 'SELECT * from articles WHERE id = ' . $id;
-    return Sql::queryOnce($sql, 'News');
+    return DB::queryOne($sql, 'News');
   }
 
   public static function upViewCounter($id, $viewcounter)
   {
     $sql = 'UPDATE articles SET viewcounter = ' . ++$viewcounter . ' WHERE id = ' . $id;
-    Sql::exec($sql);
+    DB::exec($sql);
     return $viewcounter;
   }
 }
