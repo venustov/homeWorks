@@ -23,9 +23,14 @@ class DB
 
   public static function exec($sql)
   {
-    $mysqli = self::connect();
-    $mysqli->query($sql);
+    if (!$mysqli = self::connect()) {
+      return false;
+    }
+    if (!$mysqli->query($sql)) {
+      return false;
+    }
     $mysqli->close();
+    return true;
   }
 
   public static function queryOne($sql, $class = 'stdClass')

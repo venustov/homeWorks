@@ -4,6 +4,7 @@ RewriteBase /
 RewriteRule ^index.html$ /index.php
 
 RewriteRule ^articles/(.*)$ index.php?ctrl=News&act=One&id=$1
+RewriteRule ^add.php$ index.php?ctrl=Admin&act=AddArticle
 
 ErrorDocument 401 /index.php
 ErrorDocument 403 /index.php

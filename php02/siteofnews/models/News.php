@@ -16,14 +16,15 @@ class News extends AbstractModel
   {
     $sql = 'INSERT INTO articles
 (title, content, preview)
-VALUES (\'' . $data['title'] . '\', \'' . $data['content'] . '\', \'' . $data['picture'] . '\')';
+VALUES (\'' . $data['title'] . '\', \'' . $data['content'] . '\', \'' . $data['preview'] . '\')';
 
-    DB::exec($sql);
+    return DB::exec($sql) ? true : false;
   }
 
   public static function upViewCounter($id, $viewcounter)
   {
     $sql = 'UPDATE articles SET viewcounter = ' . ++$viewcounter . ' WHERE id = ' . $id;
+
     DB::exec($sql);
     return $viewcounter;
   }
