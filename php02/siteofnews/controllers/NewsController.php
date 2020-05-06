@@ -6,7 +6,11 @@ class NewsController
   public function actionAll()
   {
     $items = News::getAll();
-    include __DIR__ . '/../views/news/all.php';
+
+    $view = new View();
+    $view->data('news', $items);
+    $view->display('all.php');
+//    include __DIR__ . '/../views/news/all.php';
   }
 
   public function actionOne()
@@ -19,8 +23,12 @@ class NewsController
     if (empty($item)){
       exit('Запрашиваемой статьи нету в Базе Данных');
     }
-    $viewcounter = News::upViewCounter($_GET['id'], $item->viewcounter);
-    include __DIR__ . '/../views/news/one.php';
+    $item->viewcounter = News::upViewCounter($_GET['id'], $item->viewcounter);
+
+    $view = new View();
+    $view->data('news', $item);
+    $view->display('one.php');
+//    include __DIR__ . '/../views/news/one.php';
   }
 
 }
