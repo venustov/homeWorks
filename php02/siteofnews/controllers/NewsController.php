@@ -8,7 +8,8 @@ class NewsController
     $items = News::getAll();
 
     $view = new View();
-    $view->assign('items', $items);
+    $view->items = $items;
+
     $view->display('news/all.php');
   }
 
@@ -25,7 +26,7 @@ class NewsController
     $item->viewcounter = News::upViewCounter($_GET['id'], $item->viewcounter);
 
     $view = new View();
-    $view->assign('item', $item);
+    $view->item = $item;
     $view->display('news/one.php');
   }
 
