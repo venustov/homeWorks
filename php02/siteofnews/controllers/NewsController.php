@@ -11,6 +11,14 @@ class NewsController
     $view->items = $items;
 
     $view->display('news/all.php');
+
+/*    Эта шляпа не работает
+    foreach($view as $key => $value) {
+      var_dump($key, $value);
+      echo '\n';
+    } die();
+    */
+
   }
 
   public function actionOne()
@@ -27,6 +35,7 @@ class NewsController
 
     $view = new View();
     $view->item = $item;
+
     $view->display('news/one.php');
   }
 
