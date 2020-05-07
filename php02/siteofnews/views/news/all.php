@@ -12,7 +12,7 @@
 <p><a href="/add.php">Добавить статью</a></p>
 <?php
 // include __DIR__ . '/form.php';
-foreach($this->data as $item){
+foreach($items as $item){
   $str = '<div class="article prev"><a href="articles/' . $item->id . '"><img class="prev" src="/img/' . $item->preview . '" alt=""></a></div><a href="articles/' . $item->id . '">' . $item->title . '</a>';
   echo $str;
 }

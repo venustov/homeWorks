@@ -8,9 +8,8 @@ class NewsController
     $items = News::getAll();
 
     $view = new View();
-    $view->data('news', $items);
-    $view->display('all.php');
-//    include __DIR__ . '/../views/news/all.php';
+    $view->assign('items', $items);
+    $view->display('news/all.php');
   }
 
   public function actionOne()
@@ -26,9 +25,8 @@ class NewsController
     $item->viewcounter = News::upViewCounter($_GET['id'], $item->viewcounter);
 
     $view = new View();
-    $view->data('news', $item);
-    $view->display('one.php');
-//    include __DIR__ . '/../views/news/one.php';
+    $view->assign('item', $item);
+    $view->display('news/one.php');
   }
 
 }

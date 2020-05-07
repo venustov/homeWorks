@@ -3,17 +3,21 @@
 
 class View
 {
-  public $folder;
-  public $data;
+  const PATH = __DIR__ . '/../views/';
 
-  public function data($folder, $data)
+  protected $data = [];
+
+  public function assign($name, $value)
   {
-    $this->folder = $folder;
-    $this->data = $data;
+    $this->data[$name] = $value;
   }
 
-  public function display($url)
+  public function display($template)
   {
-    include __DIR__ . '/../views/' . $this->folder . '/' . $url;
+    // $this->data['items'] --> $items
+    foreach ($this->data as $key => $val) {
+      $$key = $val;
+    }
+    include self::PATH . $template;
   }
 }
