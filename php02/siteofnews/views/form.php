@@ -1,4 +1,4 @@
-<form class="upload" action="/add.php" method="post" enctype="multipart/form-data">
+<form class="upload" action="/add.php/addArticle" method="post" enctype="multipart/form-data">
   <h3>Размещение статьи:</h3>
   <p><input type="text" id="title" name="title" placeholder="Заголовок статьи"></p>
   <p><textarea class="text" name="content"></textarea></p>
