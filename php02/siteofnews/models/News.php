@@ -18,7 +18,8 @@ class News extends AbstractModel
 (title, content, preview)
 VALUES (\'' . $data['title'] . '\', \'' . $data['content'] . '\', \'' . $data['preview'] . '\')';
 
-    return DB::exec($sql) ? true : false;
+    $insert_id = DB::exec($sql);
+    return $insert_id ? $insert_id : false;
   }
 
   public static function upViewCounter($id, $viewcounter)

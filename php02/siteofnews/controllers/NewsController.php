@@ -12,12 +12,11 @@ class NewsController
 
     $view->display('news/all.php');
 
-/*    Эта шляпа не работает
+//    Эта шляпа не работает
     foreach($view as $key => $value) {
       var_dump($key, $value);
       echo '\n';
     } die();
-    */
 
   }
 
@@ -37,6 +36,13 @@ class NewsController
     $view->item = $item;
 
     $view->display('news/one.php');
+
+    //    Эта шляпа не работает
+    foreach($view as $key => $value) {
+      var_dump($key, $value);
+      echo '\n';
+    } die();
+
   }
 
 }

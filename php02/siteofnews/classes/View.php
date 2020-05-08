@@ -36,28 +36,40 @@ class View
     echo $this->render($template);
   }
 
-  public function current()
-  {
-    return $this->data[$this->position];
-  }
-
-  public function next()
-  {
-    ++$this->position;
-  }
-
-  public function key()
-  {
-    return $this->position;
-  }
-
-  public function valid()
-  {
-    return isset($this->data[$this->position]);
+//Всё, что ниже - не работает
+  public function __construct() {
+    $this->position = 0;
   }
 
   public function rewind()
   {
+    var_dump(__METHOD__);
     $this->position = 0;
   }
+
+  public function current()
+  {
+    var_dump(__METHOD__);
+    return $this->data[$this->position];
+  }
+
+  public function key()
+  {
+    var_dump(__METHOD__);
+    return $this->position;
+  }
+
+  public function next()
+  {
+    var_dump(__METHOD__);
+    ++$this->position;
+  }
+
+  public function valid()
+  {
+    var_dump(__METHOD__);
+    var_dump($this->data[$this->position]);
+    return isset($this->data[$this->position]);
+  }
+
 }

@@ -29,8 +29,10 @@ class DB
     if (!$mysqli->query($sql)) {
       return false;
     }
+    $latest_id = $mysqli->insert_id;
     $mysqli->close();
-    return true;
+
+    return $latest_id ? $latest_id : true;
   }
 
   public static function queryOne($sql, $class = 'stdClass')

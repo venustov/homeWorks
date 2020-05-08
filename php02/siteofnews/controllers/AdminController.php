@@ -31,7 +31,7 @@ class AdminController
       }
 */
       if (isset($data['title']) && isset($data['content'])) {
-        if (!empty($_FILES) && ($data['preview'] = File::uploadImg('preview')) && News::insert($data)) {
+        if (!empty($_FILES) && ($data['preview'] = File::uploadImg('preview')) && ($data['id'] = News::insert($data))) {
           header('Location: /');
           die();
         }
