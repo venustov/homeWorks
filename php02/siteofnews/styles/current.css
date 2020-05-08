@@ -93,3 +93,7 @@ img.photo {
 .success {
     background: darkseagreen;
 }
+.text {
+    width: 500px;
+    height: 300px;
+}
