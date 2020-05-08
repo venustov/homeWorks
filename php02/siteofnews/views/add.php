@@ -9,7 +9,6 @@
     <link rel="stylesheet" type="text/css" href="/styles/current.css">
 </head>
 <body>
-<?php include __DIR__ . '/form.php'; echo var_dump($data); ?>
-<p><a href="/">На главную</a></p>
+<?php include __DIR__ . '/form.php'; ?>
 </body>
 </html>

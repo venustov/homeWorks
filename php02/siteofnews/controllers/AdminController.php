@@ -9,12 +9,24 @@ class AdminController
 
       $data = [];
 
+      $data['error'] = [];
+
       if (!empty($_POST['title'])) {
         $data['title'] = $_POST['title'];
+      } else {
+        $data['error'][] = 'Не заполнено обязательное поле "Заголовок статьи"';
       }
 
       if (!empty($_POST['content'])) {
         $data['content'] = $_POST['content'];
+      } else {
+        $data['error'][] = 'Не заполнено обязательное поле "Контент статьи"';
+      }
+
+      if (!empty($_FILES['preview']['name'])) {
+        $data['file'] = $_FILES['preview']['name'];
+      } else {
+        $data['error'][] = 'Не выбран файл картинки-превью';
       }
       /* Старый вариант, при котором можно было загрузить картинку, а в базу ничего не записать
             if (!empty($_FILES)){
@@ -30,9 +42,11 @@ class AdminController
               die();
             }
       */
-      if (isset($data['title']) && isset($data['content'])) {
-        if (!empty($_FILES) && ($data['preview'] = File::uploadImg('preview')) && ($data['id'] = News::insert($data))) {
+      if (isset($data['title']) && isset($data['content']) && isset($data['file'])) {
+        if (($data['preview'] = File::uploadImg('preview')) && ($data['id'] = News::insert($data))) {
           $data['success'] = 'Статья размещена успешно. Посмотреть: ';
+        } else {
+          $data['error'][] = 'Произошла ошибка при размещении. Попробуйте позже или обратитесь в службу поддержки';
         }
       }
       self::actionAddArticleForm($data);
