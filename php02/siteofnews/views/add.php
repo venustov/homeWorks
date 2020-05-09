@@ -11,7 +11,7 @@
 <body>
 <?php if (!empty($data['error'])): ?>
     <div class="error">
-      <?php foreach ($data['error'] as $value): ?>
+      <?php foreach ($article->error as $value): ?>
           <p><?php echo $value; ?></p>
       <?php endforeach; ?>
     </div>

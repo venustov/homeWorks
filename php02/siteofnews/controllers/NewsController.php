@@ -5,7 +5,7 @@ class NewsController
 
   public function actionAll()
   {
-    $items = News::getAll();
+    $items = NewsModel::findAll();
 
     $view = new View();
     $view->items = $items;
@@ -26,11 +26,11 @@ class NewsController
       header('Location: /index.php');
       die();
     }
-    $item = News::getOne($_GET['id']);
+    $item = NewsModel::findOneById($_GET['id']);
     if (empty($item)){
       exit('Запрашиваемой статьи нету в Базе Данных');
     }
-    $item->viewcounter = News::upViewCounter($_GET['id'], $item->viewcounter);
+    $item->viewcounter = NewsModel::upViewCounter($_GET['id'], $item->viewcounter);
 
     $view = new View();
     $view->item = $item;

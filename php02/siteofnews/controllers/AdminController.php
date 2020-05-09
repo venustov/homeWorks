@@ -37,13 +37,14 @@ class AdminController
             }
 
             if (isset($data['title']) && isset($data['content']) && isset($data['preview'])){
-              News::insert($data);
+              NewsModel::insert($data);
               header('Location: /');
               die();
             }
       */
       if (isset($data['title']) && isset($data['content']) && isset($data['file'])) {
-        if (($data['preview'] = File::uploadImg('preview')) && ($data['id'] = News::insert($data))) {
+        $article = new NewsModel();
+        if (($data['preview'] = File::uploadImg('preview')) && ($data['id'] = NewsModel::insert($data))) {
           $data['success'] = 'Статья размещена успешно.';
         } else {
 // Здесь надо проверять, а нету ли в сессии записи об ошибке, и, если есть, то присваивать её значение, а не то, что ниже

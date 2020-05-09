@@ -2,23 +2,36 @@
 
 class DB
 {
+  private $dbh;
+  private $className = 'stdClass';
+
+  public function __construct()
+  {
+    $this->dbh = new PDO('mysql:dbname=homeworks;host=localhost', 'root', '');
+  }
+
+  public function setClassName($className)
+  {
+    $this->className = $className;
+  }
+
+  public function query($sql, $params = [])
+  {
+    $sth = $this->dbh->prepare($sql);
+    $sth->execute($params);
+    return $sth->fetchAll(PDO::FETCH_CLASS, $this->className);
+  }
+
+  public function execute($sql, $params = [])
+  {
+    $sth = $this->dbh->prepare($sql);
+    return $sth->execute($params);
+  }
+
   private static function connect()
   {
     $mysqli = new mysqli('localhost', 'root', '', 'homeworks');
     return $mysqli;
-  }
-
-  public static function queryAll($sql, $class = 'stdClass')
-  {
-    $mysqli = self::connect();
-    $res = $mysqli->query($sql);
-
-    $ret = [];
-    while (false != $row = $res->fetch_object($class)) {
-      $ret[] = $row;
-    }
-    $mysqli->close();
-    return $ret;
   }
 
   public static function exec($sql)
@@ -35,8 +48,4 @@ class DB
     return $latest_id ? $latest_id : true;
   }
 
-  public static function queryOne($sql, $class = 'stdClass')
-  {
-    return self::queryAll($sql, $class)[0];
-  }
 }
