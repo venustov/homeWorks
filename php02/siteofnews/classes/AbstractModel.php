@@ -56,9 +56,7 @@ abstract class AbstractModel
        (' . implode(', ', array_keys($data)) . ')
        ';
     $db = new DB();
-    $db->execute($sql, $data);
-    echo $sql;
-    die();
+    return $db->execute($sql, $data);
   }
 
 }

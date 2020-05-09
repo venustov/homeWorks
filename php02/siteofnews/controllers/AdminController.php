@@ -13,12 +13,14 @@ class AdminController
 
       if (!empty($_POST['title'])) {
         $data['title'] = $_POST['title'];
+        $article->title = $data['title'];
       } else {
         $data['error'][] = 'Не заполнено обязательное поле "Заголовок статьи"';
       }
 
       if (!empty($_POST['content'])) {
         $data['content'] = $_POST['content'];
+        $article->content = $data['content'];
       } else {
         $data['error'][] = 'Не заполнено обязательное поле "Контент статьи"';
       }
@@ -43,7 +45,7 @@ class AdminController
             }
       */
       if (isset($data['title']) && isset($data['content']) && isset($data['file'])) {
-        if (($data['preview'] = File::uploadImg('preview')) && ($data['id'] = NewsModel::insert($data))) {
+        if (($article->preview = File::uploadImg('preview')) && ($data['id'] = $article->insert())) {
           $data['success'] = 'Статья размещена успешно.';
         } else {
 // Здесь надо проверять, а нету ли в сессии записи об ошибке, и, если есть, то присваивать её значение, а не то, что ниже
