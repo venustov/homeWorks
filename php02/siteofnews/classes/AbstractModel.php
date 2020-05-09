@@ -37,11 +37,16 @@ abstract class AbstractModel
     return $db->query($sql, [':id' => $id])[0];
   }
 
+  public function fill($data = [])
+  {
+    // написать метод, который установит нужные свойства из массива $data данному объекту
+  }
+
   public function insert()
   {
     $cols = array_keys($this->data);
     $data = [];
-    foreach ($cols as $col){
+    foreach ($cols as $col) {
       $data[':' . $col] = $this->data[$col];
     }
     $sql =
@@ -52,7 +57,8 @@ abstract class AbstractModel
        ';
     $db = new DB();
     $db->execute($sql, $data);
-    echo $sql; die();
+    echo $sql;
+    die();
   }
 
 }

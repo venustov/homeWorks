@@ -6,7 +6,7 @@ class AdminController
   public static function actionAddArticle()
   {
     if (!empty($_POST)) {
-
+      $article = new NewsModel();
       $data = [];
 
       $data['error'] = [];
@@ -43,7 +43,6 @@ class AdminController
             }
       */
       if (isset($data['title']) && isset($data['content']) && isset($data['file'])) {
-        $article = new NewsModel();
         if (($data['preview'] = File::uploadImg('preview')) && ($data['id'] = NewsModel::insert($data))) {
           $data['success'] = 'Статья размещена успешно.';
         } else {

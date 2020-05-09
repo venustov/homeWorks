@@ -1,13 +1,17 @@
 <?php
 
+/**
+ * Class NewsModel
+ * @property $id
+ * @property $title
+ * @property $content
+ * @property $timeofadd
+ * @property $viewcounter
+ * @property $preview
+ */
+
 class NewsModel extends AbstractModel
 {
-/*  public $id;
-  public $title;
-  public $content;
-  public $timeofadd;
-  public $viewcounter;
-  public $preview;*/
 
   protected static $table = 'articles';
 
