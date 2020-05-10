@@ -11,12 +11,11 @@
 <body>
 <?php if (!empty($data['error'])): ?>
     <div class="error">
-      <?php foreach ($article->error as $value): ?>
+      <?php foreach ($data['error'] as $value): ?>
           <p><?php echo $value; ?></p>
       <?php endforeach; ?>
     </div>
-<?php endif; ?>
-<?php if (!empty($data['success'])): ?>
+<?php elseif (!empty($data['success'])): ?>
     <div class="success">
         <p><?php echo $data['success']; ?> <a href="/articles/<?php echo $data['id']; ?>">Посмотреть</a></p>
     </div>

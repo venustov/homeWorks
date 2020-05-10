@@ -30,20 +30,7 @@ class AdminController
       } else {
         $data['error'][] = 'Не выбран файл картинки-превью';
       }
-      /* Старый вариант, при котором можно было загрузить картинку, а в базу ничего не записать
-            if (!empty($_FILES)){
-              $res = File::uploadImg('preview');
-              if (false !== $res){
-                $data['preview'] = $res;
-              }
-            }
 
-            if (isset($data['title']) && isset($data['content']) && isset($data['preview'])){
-              NewsModel::insert($data);
-              header('Location: /');
-              die();
-            }
-      */
       if (isset($data['title']) && isset($data['content']) && isset($data['file'])) {
         if (($article->preview = File::uploadImg('preview')) && ($data['id'] = $article->insert())) {
           $data['success'] = 'Статья размещена успешно.';
