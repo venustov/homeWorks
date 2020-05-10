@@ -68,4 +68,20 @@ abstract class AbstractModel
     return $db->execute($sql);
   }
 
+  public static function findByColumn($column, $value)
+  {
+    $class = get_called_class();
+    $sql = 'SELECT * FROM ' . static::$table . ' WHERE ' . $column . '=:value';
+    $db = new DB();
+    $db->setClassName($class);
+    return $db->query($sql, [':value' => $value]);
+  }
+
+  public function delete($column, $value)
+  {
+    $sql = 'DELETE * FROM ' . static::$table . ' WHERE ' . $column . '=:value';
+    $db = new DB();
+    return $db->execute($sql, [':value' => $value]);
+  }
+
 }
