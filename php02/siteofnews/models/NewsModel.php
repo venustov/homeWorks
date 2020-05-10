@@ -15,11 +15,4 @@ class NewsModel extends AbstractModel
 
   protected static $table = 'articles';
 
-  public static function upViewCounter($id, $viewcounter)
-  {
-    $sql = 'UPDATE articles SET viewcounter = ' . ++$viewcounter . ' WHERE id = ' . $id;
-
-    DB::exec($sql);
-    return $viewcounter;
-  }
 }

@@ -30,7 +30,8 @@ class NewsController
     if (empty($item)){
       exit('Запрашиваемой статьи нету в Базе Данных');
     }
-    $item->viewcounter = NewsModel::upViewCounter($_GET['id'], $item->viewcounter);
+
+    NewsModel::updateOne($_GET['id'], 'viewcounter', ++$item->viewcounter);
 
     $view = new View();
     $view->item = $item;

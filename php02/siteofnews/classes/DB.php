@@ -30,24 +30,4 @@ class DB
     return $insert_id ? $insert_id : true;
   }
 
-  private static function connect()
-  {
-    $mysqli = new mysqli('localhost', 'root', '', 'homeworks');
-    return $mysqli;
-  }
-
-  public static function exec($sql)
-  {
-    if (!$mysqli = self::connect()) {
-      return false;
-    }
-    if (!$mysqli->query($sql)) {
-      return false;
-    }
-    $latest_id = $mysqli->insert_id;
-    $mysqli->close();
-
-    return $latest_id ? $latest_id : true;
-  }
-
 }

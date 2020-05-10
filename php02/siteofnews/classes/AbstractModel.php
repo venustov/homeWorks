@@ -59,4 +59,13 @@ abstract class AbstractModel
     return $db->execute($sql, $data);
   }
 
+  public static function updateOne($id, $key, $value)
+  {
+    $sql = 'UPDATE ' . static::$table . ' 
+    SET ' . $key . '=' . $value . '
+    WHERE id=' . $id;
+    $db = new DB();
+    return $db->execute($sql);
+  }
+
 }
