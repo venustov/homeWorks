@@ -32,7 +32,8 @@ class AdminController
       }
 
       if (isset($data['title']) && isset($data['content']) && isset($data['file'])) {
-        if (($article->preview = File::uploadImg('preview')) && ($data['id'] = $article->insert())) {
+        if (($article->preview = File::uploadImg('preview')) && $article->insert()) {
+          $data['id'] = $article->id;
           $data['success'] = 'Статья размещена успешно.';
         } else {
 // Здесь надо проверять, а нету ли в сессии записи об ошибке, и, если есть, то присваивать её значение, а не то, что ниже

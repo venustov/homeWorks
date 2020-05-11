@@ -56,7 +56,11 @@ abstract class AbstractModel
        (' . implode(', ', array_keys($data)) . ')
        ';
     $db = new DB();
-    return $db->execute($sql, $data);
+    $res = $db->execute($sql, $data);
+    if (true == $res){
+      $this->id = $db->lastInsertId();
+    }
+    return $res;
   }
 
   public static function updateOne($id, $key, $value)
@@ -77,7 +81,7 @@ abstract class AbstractModel
     return $db->query($sql, [':value' => $value]);
   }
 
-  public function delete($column, $value)
+  public function deleteByColumnValue($column, $value)
   {
     $sql = 'DELETE * FROM ' . static::$table . ' WHERE ' . $column . '=:value';
     $db = new DB();
