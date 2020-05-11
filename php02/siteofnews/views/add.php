@@ -17,7 +17,7 @@
     </div>
 <?php elseif (!empty($data['success'])): ?>
     <div class="success">
-        <p><?php echo $data['success']; ?> <a href="/articles/<?php echo $data['id']; ?>">Посмотреть</a></p>
+        <p><?php echo $data['success']; ?> <a href="/articles/<?php echo $data['article']->id; ?>">Посмотреть</a></p>
     </div>
 <?php endif; ?>
 <?php include __DIR__ . '/form.php'; ?>

@@ -12,15 +12,13 @@ class AdminController
       $data['error'] = [];
 
       if (!empty($_POST['title'])) {
-        $data['title'] = $_POST['title'];
-        $article->title = $data['title'];
+        $article->title = $_POST['title'];
       } else {
         $data['error'][] = 'Не заполнено обязательное поле "Заголовок статьи"';
       }
 
       if (!empty($_POST['content'])) {
-        $data['content'] = $_POST['content'];
-        $article->content = $data['content'];
+        $article->content = $_POST['content'];
       } else {
         $data['error'][] = 'Не заполнено обязательное поле "Контент статьи"';
       }
@@ -31,15 +29,15 @@ class AdminController
         $data['error'][] = 'Не выбран файл картинки-превью';
       }
 
-      if (isset($data['title']) && isset($data['content']) && isset($data['file'])) {
+      if ($article->title && $article->content && isset($data['file'])) {
         if (($article->preview = File::uploadImg('preview')) && $article->insert()) {
-          $data['id'] = $article->id;
           $data['success'] = 'Статья размещена успешно.';
         } else {
 // Здесь надо проверять, а нету ли в сессии записи об ошибке, и, если есть, то присваивать её значение, а не то, что ниже
           $data['error'][] = 'Произошла неизвестная ошибка при размещении статьи. Попробуйте позже или обратитесь в службу поддержки';
         }
       }
+      $data['article'] = $article;
       self::actionAddArticleForm($data);
     }
   }

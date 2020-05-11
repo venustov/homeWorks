@@ -30,8 +30,7 @@ class DB
 
   public function lastInsertId()
   {
-    $lastInsertId = $this->dbh->lastInsertId();
-    return $lastInsertId;
+    return $this->dbh->lastInsertId();
   }
 
 }
