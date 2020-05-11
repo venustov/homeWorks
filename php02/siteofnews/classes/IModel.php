@@ -4,5 +4,5 @@
 interface IModel
 {
 public static function findAll();
-public static function findOneById($id);
+public function findOneById($id);
 }

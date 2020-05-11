@@ -12,11 +12,11 @@ class NewsController
 
     $view->display('news/all.php');
 
-/* Эта шляпа не работает
-    foreach($view as $key => $value) {
-      var_dump($key, $value);
-      echo '\n';
-    } die();*/
+    /* Эта шляпа не работает
+        foreach($view as $key => $value) {
+          var_dump($key, $value);
+          echo '\n';
+        } die();*/
 
   }
 
@@ -26,23 +26,26 @@ class NewsController
       header('Location: /index.php');
       die();
     }
-    $item = NewsModel::findOneById($_GET['id']);
-    if (empty($item)){
+
+    $news = new NewsModel;
+    $item = $news->findOneById($_GET['id']);
+    if (empty($item)) {
       exit('Запрашиваемой статьи нету в Базе Данных');
     }
 
-    NewsModel::updateOne($_GET['id'], 'viewcounter', ++$item->viewcounter);
+    ++$item->viewcounter;
+    $item->update();
 
     $view = new View();
     $view->item = $item;
 
     $view->display('news/one.php');
 
-/* Эта шляпа не работает
-    foreach($view as $key => $value) {
-      var_dump($key, $value);
-      echo '\n';
-    } die();*/
+    /* Эта шляпа не работает
+        foreach($view as $key => $value) {
+          var_dump($key, $value);
+          echo '\n';
+        } die();*/
 
   }
 

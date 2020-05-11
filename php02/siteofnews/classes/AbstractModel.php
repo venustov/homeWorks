@@ -28,7 +28,7 @@ abstract class AbstractModel
     return $db->query($sql);
   }
 
-  public static function findOneById($id)
+  public function findOneById($id)
   {
     $class = get_called_class();
     $sql = 'SELECT * FROM ' . static::$table . ' WHERE id=:id';
@@ -63,13 +63,24 @@ abstract class AbstractModel
     return $res;
   }
 
-  public static function updateOne($id, $key, $value)
+  public function update()
   {
-    $sql = 'UPDATE ' . static::$table . ' 
-    SET ' . $key . '=' . $value . '
-    WHERE id=' . $id;
     $db = new DB();
-    return $db->execute($sql);
+
+    $data = [];
+    $dataExec = [];
+
+    foreach ($this->data as $key => $value){
+      $data[] = $key . '=:' . $key;
+      $dataExec[':' . $key] = $value;
+    }
+
+    $dataExec[':id'] = $this->id;
+
+    $sql = 'UPDATE ' . static::$table . ' 
+    SET ' . implode(', ', $data) . ' WHERE id=:id';
+
+    return $db->execute($sql, $dataExec);
   }
 
   public static function findByColumn($column, $value)
