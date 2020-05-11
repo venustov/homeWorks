@@ -27,8 +27,7 @@ class NewsController
       die();
     }
 
-    $news = new NewsModel;
-    $item = $news->findOneById($_GET['id']);
+    $item = NewsModel::findOneById($_GET['id']);
     if (empty($item)) {
       exit('Запрашиваемой статьи нету в Базе Данных');
     }

@@ -28,7 +28,7 @@ abstract class AbstractModel
     return $db->query($sql);
   }
 
-  public function findOneById($id)
+  public static function findOneById($id)
   {
     $class = get_called_class();
     $sql = 'SELECT * FROM ' . static::$table . ' WHERE id=:id';
@@ -92,7 +92,7 @@ abstract class AbstractModel
     return $db->query($sql, [':value' => $value]);
   }
 
-  public function deleteByColumnValue($column, $value)
+  public function delete()
   {
     $sql = 'DELETE * FROM ' . static::$table . ' WHERE ' . $column . '=:value';
     $db = new DB();
