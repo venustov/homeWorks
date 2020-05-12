@@ -93,10 +93,10 @@ abstract class AbstractModel
   }
 
   public function delete()
+    // этот метод не удаляет картинку, связанную с объектом, а только запись в БД
   {
     $sql = 'DELETE FROM ' . static::$table . ' WHERE id=:id';
     $db = new DB();
-    echo $sql;
     return $db->execute($sql, [':id' => $this->id]);
   }
 
