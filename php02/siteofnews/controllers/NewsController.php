@@ -33,7 +33,7 @@ class NewsController
     }
 
     ++$item->viewcounter;
-    $item->update();
+    $item->save();
 
     $view = new View();
     $view->item = $item;

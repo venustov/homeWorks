@@ -29,8 +29,8 @@ class AdminController
         $data['error'][] = 'Не выбран файл картинки-превью';
       }
 
-      if ($article->title && $article->content && isset($data['file'])) {
-        if (($article->preview = File::uploadImg('preview')) && $article->insert()) {
+      if (isset($article->title) && isset($article->content) && isset($data['file'])) {
+        if (($article->preview = File::uploadImg('preview')) && $article->save()) {
           $data['success'] = 'Статья размещена успешно.';
         } else {
 // Здесь надо проверять, а нету ли в сессии записи об ошибке, и, если есть, то присваивать её значение, а не то, что ниже

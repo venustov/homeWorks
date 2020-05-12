@@ -19,6 +19,11 @@ abstract class AbstractModel
     return $this->data[$name];
   }
 
+  public function __isset($name)
+  {
+    return isset($this->data[$name]);
+  }
+
   public static function findAll()
   {
     $class = get_called_class();
@@ -28,13 +33,21 @@ abstract class AbstractModel
     return $db->query($sql);
   }
 
+  /**
+   * @return NewsModel|boolean
+   */
+
   public static function findOneById($id)
   {
     $class = get_called_class();
     $sql = 'SELECT * FROM ' . static::$table . ' WHERE id=:id';
     $db = new DB();
     $db->setClassName($class);
-    return $db->query($sql, [':id' => $id])[0];
+    $res = $db->query($sql, [':id' => $id]);
+    if (!empty($res)){
+      return $res[0];
+    }
+    return false;
   }
 
   public function fill($data = [])
@@ -42,7 +55,7 @@ abstract class AbstractModel
     // написать метод, который установит нужные свойства из массива $data данному объекту
   }
 
-  public function insert()
+  protected function insert()
   {
     $cols = array_keys($this->data);
     $data = [];
@@ -63,33 +76,37 @@ abstract class AbstractModel
     return $res;
   }
 
-  public function update()
+  protected function update()
   {
     $db = new DB();
 
+    $cols = [];
     $data = [];
-    $dataExec = [];
 
     foreach ($this->data as $key => $value){
-      $data[] = $key . '=:' . $key;
-      $dataExec[':' . $key] = $value;
+      $data[':' . $key] = $value;
+      if ('id' == $key){
+        continue;
+      }
+      $cols[] = $key . '=:' . $key;
     }
 
-    $dataExec[':id'] = $this->id;
-
     $sql = 'UPDATE ' . static::$table . ' 
-    SET ' . implode(', ', $data) . ' WHERE id=:id';
+    SET ' . implode(', ', $cols) . ' WHERE id=:id';
 
-    return $db->execute($sql, $dataExec);
+    return $db->execute($sql, $data);
   }
 
   public static function findByColumn($column, $value)
   {
-    $class = get_called_class();
     $sql = 'SELECT * FROM ' . static::$table . ' WHERE ' . $column . '=:value';
     $db = new DB();
-    $db->setClassName($class);
-    return $db->query($sql, [':value' => $value]);
+    $db->setClassName(get_called_class());
+    $res = $db->query($sql, [':value' => $value]);
+    if (!empty($res)){
+      return $res[0];
+    }
+    return false;
   }
 
   public function delete()
@@ -98,6 +115,15 @@ abstract class AbstractModel
     $sql = 'DELETE FROM ' . static::$table . ' WHERE id=:id';
     $db = new DB();
     return $db->execute($sql, [':id' => $this->id]);
+  }
+
+  public function save()
+  {
+    if (!isset($this->id)){
+      return $this->insert();
+    } else {
+      return $this->update();
+    }
   }
 
 }
