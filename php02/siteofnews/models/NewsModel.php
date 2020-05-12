@@ -12,7 +12,7 @@
 
 class NewsModel extends AbstractModel
 {
-
+  
   protected static $table = 'articles';
 
 }
