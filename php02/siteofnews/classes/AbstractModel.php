@@ -94,9 +94,10 @@ abstract class AbstractModel
 
   public function delete()
   {
-    $sql = 'DELETE * FROM ' . static::$table . ' WHERE ' . $column . '=:value';
+    $sql = 'DELETE FROM ' . static::$table . ' WHERE id=:id';
     $db = new DB();
-    return $db->execute($sql, [':value' => $value]);
+    echo $sql;
+    return $db->execute($sql, [':id' => $this->id]);
   }
 
 }
