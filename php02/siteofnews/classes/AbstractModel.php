@@ -44,10 +44,12 @@ abstract class AbstractModel
     $db = new DB();
     $db->setClassName($class);
     $res = $db->query($sql, [':id' => $id]);
-    if (!empty($res)){
-      return $res[0];
+
+    if (empty($res)) {
+      throw new ModelException('Ничего не найдено...');
     }
-    return false;
+
+    return $res[0];
   }
 
   public function fill($data = [])
@@ -70,7 +72,7 @@ abstract class AbstractModel
        ';
     $db = new DB();
     $res = $db->execute($sql, $data);
-    if (true == $res){
+    if (true == $res) {
       $this->id = $db->lastInsertId();
     }
     return $res;
@@ -83,9 +85,9 @@ abstract class AbstractModel
     $cols = [];
     $data = [];
 
-    foreach ($this->data as $key => $value){
+    foreach ($this->data as $key => $value) {
       $data[':' . $key] = $value;
-      if ('id' == $key){
+      if ('id' == $key) {
         continue;
       }
       $cols[] = $key . '=:' . $key;
@@ -103,10 +105,12 @@ abstract class AbstractModel
     $db = new DB();
     $db->setClassName(get_called_class());
     $res = $db->query($sql, [':value' => $value]);
-    if (!empty($res)){
-      return $res[0];
+
+    if (empty($res)) {
+      throw new ModelException('Ничего не найдено...');
     }
-    return false;
+
+    return $res[0];
   }
 
   public function delete()
@@ -119,7 +123,7 @@ abstract class AbstractModel
 
   public function save()
   {
-    if (!isset($this->id)){
+    if (!isset($this->id)) {
       return $this->insert();
     } else {
       return $this->update();

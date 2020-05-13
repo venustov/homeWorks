@@ -5,6 +5,7 @@ class NewsController
 
   public function actionAll()
   {
+
     $items = NewsModel::findAll();
 
     $view = new View();
