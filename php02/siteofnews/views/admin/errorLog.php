@@ -8,10 +8,8 @@
   <title>Document</title>
 </head>
 <body>
-<<<<<<< HEAD
+
 <?php include __DIR__ . '/../../' . $logFile; ?>
-=======
-<?php include __DIR__ . '/../../error/log.txt'; ?>
->>>>>>> f5d9fbb31ce34c2069888d27958d3c5b718bdc2e
+
 </body>
 </html>

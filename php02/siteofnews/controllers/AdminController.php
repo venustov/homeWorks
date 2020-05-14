@@ -52,14 +52,13 @@ class AdminController
     $view->display('add.php');
   }
 
-  public static function actionErrLog(){
+  public static function actionErrLog()
+  {
+
     $view = new View();
-<<<<<<< HEAD
     $view->logFile = 'error/log.txt';
-=======
-    $view->errorFile = 'error/log.txt';
->>>>>>> f5d9fbb31ce34c2069888d27958d3c5b718bdc2e
     $view->display('admin/errorLog.php');
+
   }
 
   public function actionDeleteArticle($id)
