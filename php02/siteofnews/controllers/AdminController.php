@@ -55,8 +55,13 @@ class AdminController
   public static function actionErrLog()
   {
 
+    $path = __DIR__ . '/../error/log.txt';
+    if (!file_exists($path)){
+      throw new E404Exception('Журнал ошибок не найден', '404');
+    }
+
     $view = new View();
-    $view->logFile = 'error/log.txt';
+    $view->logArray = file($path);
     $view->display('admin/errorLog.php');
 
   }

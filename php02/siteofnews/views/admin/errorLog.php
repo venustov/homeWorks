@@ -9,7 +9,9 @@
 </head>
 <body>
 
-<?php include __DIR__ . '/../../' . $logFile; ?>
+<?php foreach ($logArray as $value): ?>
+<p><?php echo $value; ?></p>
+<?php endforeach; ?>
 
 </body>
 </html>
