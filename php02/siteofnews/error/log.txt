@@ -1,4 +1,4 @@
-00:18:05 15-05-2020 Access denied for user 'roota'@'localhost' (using password: NO) HY000
-00:20:02 15-05-2020 Access denied for user 'roota'@'localhost' (using password: NO) HY000
-00:24:10 15-05-2020 Access denied for user 'roota'@'localhost' (using password: NO) HY000 D:\Dropbox\OpenServer\OSPanel\domains\homeWorks\php02\siteofnews\classes\DB.php 13
-00:32:39 15-05-2020 Access denied for user 'rootr'@'localhost' (using password: NO) HY000 D:\Dropbox\OpenServer\OSPanel\domains\homeWorks\php02\siteofnews\classes\DB.php 13
+00:18:05 15-05-2020 Access denied for user 'roota'@'localhost' (using password: NO) HY000<br>
+00:20:02 15-05-2020 Access denied for user 'roota'@'localhost' (using password: NO) HY000<br>
+00:24:10 15-05-2020 Access denied for user 'roota'@'localhost' (using password: NO) HY000 D:\Dropbox\OpenServer\OSPanel\domains\homeWorks\php02\siteofnews\classes\DB.php 13<br>
+00:32:39 15-05-2020 Access denied for user 'rootr'@'localhost' (using password: NO) HY000 D:\Dropbox\OpenServer\OSPanel\domains\homeWorks\php02\siteofnews\classes\DB.php 13<br>

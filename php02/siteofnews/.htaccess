@@ -6,6 +6,8 @@ RewriteRule ^index.html$ /index.php
 RewriteRule ^articles/(.*)$ index.php?ctrl=News&act=One&id=$1
 RewriteRule ^add.php/addArticle$ index.php?ctrl=Admin&act=AddArticle
 RewriteRule ^add.php$ index.php?ctrl=Admin&act=AddArticleForm
+RewriteRule ^errorLog.php$ index.php?ctrl=Admin&act=ErrLog
+
 
 ErrorDocument 401 /index.php
 ErrorDocument 403 /index.php
