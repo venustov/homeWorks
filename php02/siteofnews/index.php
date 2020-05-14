@@ -15,8 +15,18 @@ try {
   $controller->$method();
 
 } catch (Exception $a) {
+
+  $record =
+    date('H:i:s d-m-Y') . ' ' .
+    $a->getMessage() . ' ' .
+    $a->getCode() . ' ' .
+    $a->getFile() . ' ' .
+    $a->getLine();
+  $errorLog = new ErrorLog($record);
+
   $view = new View();
   $view->error = $a->getMessage();
-  header("HTTP/1.0 404 Not Found");
-  $view->display('404.php');
+  $view->code = $a->getCode();
+  $view->display('error.php');
+
 }

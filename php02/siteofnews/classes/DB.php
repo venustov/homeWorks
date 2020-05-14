@@ -7,7 +7,11 @@ class DB
 
   public function __construct()
   {
-    $this->dbh = new PDO('mysql:dbname=homeworks;host=localhost', 'root', '');
+    try {
+      $this->dbh = new PDO('mysql:dbname=homeworks;host=localhost', 'root', '');
+    } catch (PDOException $e) {
+      throw new pdoDbException($e);
+    }
   }
 
   public function setClassName($className)

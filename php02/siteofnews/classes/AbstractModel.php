@@ -46,7 +46,7 @@ abstract class AbstractModel
     $res = $db->query($sql, [':id' => $id]);
 
     if (empty($res)) {
-      throw new ModelException('Ничего не найдено...');
+      throw new E404Exception('Ничего не найдено...', '404');
     }
 
     return $res[0];
@@ -107,7 +107,7 @@ abstract class AbstractModel
     $res = $db->query($sql, [':value' => $value]);
 
     if (empty($res)) {
-      throw new ModelException('Ничего не найдено...');
+      throw new E404Exception('Ничего не найдено...');
     }
 
     return $res[0];

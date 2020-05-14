@@ -24,13 +24,13 @@ class NewsController
   public function actionOne()
   {
     if (!$_GET['id']) {
-      throw new E404Exception('Некорректный адрес страницы');
+      throw new E404Exception('Некорректный адрес страницы', '404');
     }
 
     $item = NewsModel::findOneById($_GET['id']);
 
     if (empty($item)) {
-      throw new E404Exception('Запрашиваемой статьи нету в Базе Данных');
+      throw new E404Exception('Запрашиваемой статьи нету в Базе Данных', '404');
     }
 
     ++$item->viewcounter;

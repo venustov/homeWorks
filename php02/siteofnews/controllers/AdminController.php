@@ -52,7 +52,7 @@ class AdminController
     $view->display('add.php');
   }
 
-  public static function actionDeleteArticle($id)
+  public function actionDeleteArticle($id)
   {
     // Написать метод удаления записи из БД и файла картинки из папки
   }
