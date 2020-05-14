@@ -14,8 +14,9 @@ try {
 
   $controller->$method();
 
-} catch (Exception $e) {
+} catch (Exception $a) {
   $view = new View();
-  $view->error = $e->getMessage();
-  $view->display('error.php');
+  $view->error = $a->getMessage();
+  header("HTTP/1.0 404 Not Found");
+  $view->display('404.php');
 }
