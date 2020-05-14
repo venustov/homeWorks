@@ -52,6 +52,12 @@ class AdminController
     $view->display('add.php');
   }
 
+  public static function actionErrLog(){
+    $view = new View();
+    $view->logFile = 'error/log.txt';
+    $view->display('admin/errorLog.php');
+  }
+
   public function actionDeleteArticle($id)
   {
     // Написать метод удаления записи из БД и файла картинки из папки
