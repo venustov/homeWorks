@@ -8,7 +8,7 @@ $pathParts = explode('/', $path);
 $ctrl = !empty($pathParts[1]) ? ucfirst($pathParts[1]) : 'News';
 $act = !empty($pathParts[2]) ? ucfirst($pathParts[2]) : 'All';
 
-$controllerClassName = 'Application\Controllers\\' . $ctrl;
+$controllerClassName = 'Application\\Controllers\\' . $ctrl;
 
 $controller = new $controllerClassName;
 $method = 'action' . $act;
