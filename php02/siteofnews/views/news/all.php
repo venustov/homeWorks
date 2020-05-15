@@ -13,7 +13,7 @@
 <?php
 // include __DIR__ . '/form.php';
 foreach($items as $item){
-  $str = '<div class="article prev"><a href="articles/' . $item->id . '"><img class="prev" src="/img/' . $item->preview . '" alt=""></a></div><a href="articles/' . $item->id . '">' . $item->title . '</a>';
+  $str = '<div class="article prev"><a href="one?id=' . $item->id . '"><img class="prev" src="/img/' . $item->preview . '" alt=""></a></div><a href="one?id=' . $item->id . '">' . $item->title . '</a>';
   echo $str;
 }
 ?>

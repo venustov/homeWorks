@@ -1,5 +1,7 @@
 <?php
 
+namespace Application\Models;
+
 /**
  * Class NewsModel
  * @property $id
@@ -10,7 +12,7 @@
  * @property $preview
  */
 
-class NewsModel extends AbstractModel
+class News extends AbstractModel
 {
 
   protected static $table = 'articles';
