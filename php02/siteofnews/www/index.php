@@ -32,4 +32,22 @@ try {
   $view->code = $a->getCode();
   $view->display('error.php');
 
+// Отправка админу письма об ошибке:
+
+  $mail = new \PHPMailer\PHPMailer\PHPMailer();
+  $mail->setFrom('onotole@venustov.org', 'Онотоле');
+  $mail->addAddress('venustov@gmail.com', 'Тоже Онотоле');
+  $mail->Subject = 'Тест';                         // тема письма
+// html текст письма
+  $mail->msgHTML("<html><body>
+                <h1>Здравствуйте!</h1>
+                <p>Это тестовое письмо.</p>
+                </html></body>");
+// Отправляем
+  if ($mail->send()) {
+    echo 'Письмо отправлено!';
+  } else {
+    echo 'Ошибка: ' . $mail->ErrorInfo;
+  }
+
 }
