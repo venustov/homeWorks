@@ -1,7 +1,10 @@
 <?php
 
+namespace Application\Controllers;
 
-class AdminController
+use Application\Models\News as NewsModel;
+
+class Admin
 {
   public static function actionAddArticle()
   {
@@ -30,7 +33,7 @@ class AdminController
       }
 
       if (isset($article->title) && isset($article->content) && isset($data['file'])) {
-        if (($article->preview = File::uploadImg('preview')) && $article->save()) {
+        if (($article->preview = \File::uploadImg('preview')) && $article->save()) {
           $data['success'] = 'Статья размещена успешно.';
         } else {
 // Здесь надо проверять, а нету ли в сессии записи об ошибке, и, если есть, то присваивать её значение, а не то, что ниже
@@ -44,7 +47,7 @@ class AdminController
 
   public static function actionAddArticleForm($data = [])
   {
-    $view = new View();
+    $view = new \View();
     if (!empty($data)) {
       $view->data = $data;
     }

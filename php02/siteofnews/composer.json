@@ -1,0 +1,15 @@
+{
+  "name": "vendor_name/siteofnews",
+  "description": "description",
+  "minimum-stability": "stable",
+  "license": "proprietary",
+  "authors": [
+    {
+      "name": "Анатолий",
+      "email": "email@example.com"
+    }
+  ],
+  "require": {
+    "phpmailer/phpmailer": "6.1.*"
+  }
+}

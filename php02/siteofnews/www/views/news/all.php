@@ -9,11 +9,11 @@
     <link rel="stylesheet" type="text/css" href="/styles/current.css">
 </head>
 <body>
-<p><a href="/add.php">Добавить статью</a></p>
+<p><a href="admin/addArticleForm">Добавить статью</a></p>
 <?php
 // include __DIR__ . '/form.php';
 foreach($items as $item){
-  $str = '<div class="article prev"><a href="one?id=' . $item->id . '"><img class="prev" src="/img/' . $item->preview . '" alt=""></a></div><a href="one?id=' . $item->id . '">' . $item->title . '</a>';
+  $str = '<div class="article prev"><a href="news/one?id=' . $item->id . '"><img class="prev" src="/img/' . $item->preview . '" alt=""></a></div><a href="news/one?id=' . $item->id . '">' . $item->title . '</a>';
   echo $str;
 }
 ?>
