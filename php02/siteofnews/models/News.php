@@ -12,7 +12,8 @@ namespace Application\Models;
  * @property $preview
  */
 
-class News extends AbstractModel
+class News
+  extends \AbstractModel
 {
 
   protected static $table = 'articles';

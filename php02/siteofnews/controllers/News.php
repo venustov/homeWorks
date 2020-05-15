@@ -1,6 +1,10 @@
 <?php
 
-class NewsController
+namespace Application\Controllers;
+
+use Application\Models\News as NewsModel;
+
+class News
 {
 
   public function actionAll()
@@ -8,7 +12,7 @@ class NewsController
 
     $items = NewsModel::findAll();
 
-    $view = new View();
+    $view = new \View();
     $view->items = $items;
 
     $view->display('news/all.php');
@@ -36,7 +40,7 @@ class NewsController
     ++$item->viewcounter;
     $item->save();
 
-    $view = new View();
+    $view = new \View();
     $view->item = $item;
 
     $view->display('news/one.php');
