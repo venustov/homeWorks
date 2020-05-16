@@ -60,7 +60,7 @@ class Admin
 
     $path = __DIR__ . '/../error/log.txt';
     if (!file_exists($path)){
-      throw new E404Exception('Журнал ошибок не найден', '404');
+      throw new \E404Exception('Журнал ошибок не найден', '404');
     }
 
     $view = new \View();
