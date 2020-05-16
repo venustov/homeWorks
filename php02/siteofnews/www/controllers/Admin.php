@@ -63,7 +63,7 @@ class Admin
       throw new E404Exception('Журнал ошибок не найден', '404');
     }
 
-    $view = new View();
+    $view = new \View();
     $view->logArray = file($path);
     $view->display('admin/errorLog.php');
 

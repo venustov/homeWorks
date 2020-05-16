@@ -35,8 +35,8 @@ try {
 // Отправка админу письма об ошибке:
 
   $mail = new \PHPMailer\PHPMailer\PHPMailer();
-  $mail->setFrom('onotole@venustov.org', 'Онотоле');
-  $mail->addAddress('venustov@gmail.com', 'Тоже Онотоле');
+  $mail->setFrom('cms@siteofnews.com', 'Сайт Новостей');
+  $mail->addAddress('admin@siteofnews.com', 'Администратор');
   $mail->Subject = 'Тест';                         // тема письма
 // html текст письма
   $mail->msgHTML("<html><body>
